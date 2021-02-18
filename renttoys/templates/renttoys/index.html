@@ -1,0 +1,33 @@
+{% load bootstrap4 %}
+{% load static %}
+{% load thumbnail %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"
+		<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Главная :: Доска объявлений</title>
+		{% bootstrap_css %}
+		<link rel="stylesheet" type="text/css"
+		href="{% static 'renttoys/style.css' %}">
+		{% bootstrap_javascript jquery='slim' %}
+	</head>
+	<body>
+	<p><a href="/howtofindus/">Как нас найти</a>
+		<h1>Объявления</h1>
+		{% for toy in toys %}
+		<div>
+			<h2>{{toy.title}}</h2>
+			{% if toy.image %}
+			<img src="{% thumbnail toy.image 'default' %}">
+			{% endif %}
+			<p>{{toy.brand}}</p>
+			<p>{{toy.model}}</p>
+			<p>{{toy.cost1day}}</p>
+		</div>
+		{% endfor %}
+		
+		
+	</body>
+</html>
